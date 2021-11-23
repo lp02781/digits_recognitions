@@ -27,10 +27,10 @@ p = GPIO.PWM(BUZZER,391)
 p.stop()
 
 def led_on():
-    GPIO.output(LED1,GPIO.LOW)
-    GPIO.output(LED2,GPIO.LOW)
-    GPIO.output(LED3,GPIO.LOW)
-    GPIO.output(LED4,GPIO.LOW)
+    GPIO.output(LED1,GPIO.HIGH)
+    GPIO.output(LED2,GPIO.HIGH)
+    GPIO.output(LED3,GPIO.HIGH)
+    GPIO.output(LED4,GPIO.HIGH)
     p.start(50)
     p.ChangeFrequency(261)
 
@@ -63,7 +63,7 @@ def main():
   
 	while( camera.isOpened() ):
 		_, image = camera.read()
-		#image = cv2.flip(image,-1)
+		image = cv2.flip(image,-1)
 		
 		save_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		save_image = cv2.resize(save_image, (28,28))
@@ -87,7 +87,7 @@ def main():
 		
 		cv2.imshow('Save', save_image)
 		cv2.imshow('Original', image)
-		
+		count = 0
 		keyValue = cv2.waitKey(10)
         
 		if keyValue == ord('q'):
@@ -95,13 +95,15 @@ def main():
 		elif keyValue == ord('p'):
 			print("i got:", predicted_label)
 			cv2.imwrite("tf_1_14_out.jpg", image)
-			if k in range predicted_label:
+			while (count < predicted_label):
 				led_on()
 				time.sleep(1.0)
 				led_off()
 				time.sleep(1.0)
+				count =count+1
 		        
 	cv2.destroyAllWindows()
     
 if __name__ == '__main__':
     main()
+
