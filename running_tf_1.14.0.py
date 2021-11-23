@@ -26,12 +26,6 @@ def main():
 	camera.set(4, 480)
   
 	while( camera.isOpened() ):
-        
-		keyValue = cv2.waitKey(10)
-        
-		if keyValue == ord('q'):
-			break
-        
 		_, image = camera.read()
 		#image = cv2.flip(image,-1)
 		
@@ -41,10 +35,10 @@ def main():
 		
 		predictions = probability_model.predict(img_array)
 		predictions = np.array([predictions], dtype=float)
-		print(predictions)
+		#print(predictions)
 		
 		predicted_label = np.argmax(predictions)
-		print(predicted_label)
+		#print(predicted_label)
 		
 		font = cv2.FONT_HERSHEY_SIMPLEX
 		org = (50, 300)
@@ -57,6 +51,14 @@ def main():
 		
 		cv2.imshow('Save', save_image)
 		cv2.imshow('Original', image)
+		
+		keyValue = cv2.waitKey(10)
+        
+		if keyValue == ord('q'):
+			break
+		elif keyValue == ord('p'):
+			print("i got:", predicted_label)
+			cv2.imwrite("tf_1_14_out.jpg", image)
 		        
 	cv2.destroyAllWindows()
     

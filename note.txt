@@ -1,0 +1,24 @@
+folder 
+model -> model from Training_1.14.0.ipynb
+model_cnn -> model from Training_2.4.1.ipynb and modified
+model_fair -> model from Training_2.4.1.ipynb
+model_qnn -> model from Training_2.4.1.ipynb
+
+file
+Training_tf_1.14.0.ipynb -> https://www.tensorflow.org/tutorials/quickstart/beginner
+Training_2.4.1.ipynb -> https://www.tensorflow.org/quantum/tutorials/mnist (same as link in eclass)
+Training_2.4.1_modified.ipynb - > modified from ipynb before
+
+	Unfortunely Training_2.4.1.ipynb (same as link in eclass) is to build a 
+	binary classifier (True and False) to distinguish between the digits 3 and 6.
+
+	it couldn't use to classification digits from captured image.
+
+	so I modified the code so in Training_2.4.1_modified.ipynb to classify digits 
+	from captured image using Classical model like in Training_2.4.1.ipynb
+	because Classical model has the best accuracy than 2 other models.
+
+running_tf_1.14.0.py -> running model from Training_tf_1.14.0.ipynb
+running_tf_2.4.1.py -> running model from Training_2.4.1_modified.ipynb
+
+press 'p' to capture and turn on the buzzers according to digits value
