@@ -3,6 +3,7 @@ model -> model from Training_1.14.0.ipynb
 model_cnn -> model from Training_2.4.1.ipynb and modified
 model_fair -> model from Training_2.4.1.ipynb
 model_qnn -> model from Training_2.4.1.ipynb
+video -> video running the models
 
 file
 Training_tf_1.14.0.ipynb -> https://www.tensorflow.org/tutorials/quickstart/beginner
@@ -18,7 +19,12 @@ Training_2.4.1_modified.ipynb - > modified from ipynb before
 	from captured image using Classical model like in Training_2.4.1.ipynb
 	because Classical model has the best accuracy than 2 other models.
 
-running_tf_1.14.0.py -> running model from Training_tf_1.14.0.ipynb
-running_tf_2.4.1.py -> running model from Training_2.4.1_modified.ipynb
+running_tf_1.14.0.py -> running model from Training_tf_1.14.0.ipynb in raspy
+running_tf_2.4.1.py -> running model from Training_2.4.1_modified.ipynb in raspy
 
-press 'p' to capture and turn on the buzzers according to digits value
+	press 'p' to capture image and turn on the buzzers according to digits value
+
+	open this link to see training result
+
+https://github.com/lp02781/digits_recognitions/blob/main/Training_tf_1.14.0.ipynb
+https://github.com/lp02781/digits_recognitions/blob/main/Training_tf_2.4.1_modified.ipynb

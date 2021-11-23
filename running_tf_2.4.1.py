@@ -13,7 +13,49 @@ import collections
 import matplotlib.pyplot as plt
 #from cirq.contrib.svg import SVGCircuit
 
+import cv2
+import time
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+import RPi.GPIO as GPIO
+
 tf.compat.v1.enable_eager_execution()
+
+BUZZER = 12
+LED1 = 26
+LED2 = 16
+LED3 = 20
+LED4 = 21
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LED1,GPIO.OUT)
+GPIO.setup(LED2,GPIO.OUT)
+GPIO.setup(LED3,GPIO.OUT)
+GPIO.setup(LED4,GPIO.OUT)
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(BUZZER,GPIO.OUT)
+
+p = GPIO.PWM(BUZZER,391)
+p.stop()
+
+def led_on():
+    GPIO.output(LED1,GPIO.LOW)
+    GPIO.output(LED2,GPIO.LOW)
+    GPIO.output(LED3,GPIO.LOW)
+    GPIO.output(LED4,GPIO.LOW)
+    p.start(50)
+    p.ChangeFrequency(261)
+
+def led_off():
+    GPIO.output(LED1,GPIO.LOW)
+    GPIO.output(LED2,GPIO.LOW)
+    GPIO.output(LED3,GPIO.LOW)
+    GPIO.output(LED4,GPIO.LOW)
+    p.stop()
 
 def create_classical_model():
     # A simple model based off LeNet from https://keras.io/examples/mnist_cnn/
@@ -81,7 +123,12 @@ def main():
 			break
 		elif keyValue == ord('p'):
 			print("i got:", predicted_label)
-			cv2.imwrite("tf_1_14_out.jpg", image)
+			cv2.imwrite("tf_2_4_out.jpg", image)
+			if k in range predicted_label:
+				led_on()
+				time.sleep(1.0)
+				led_off()
+				time.sleep(1.0)
 			
 	cv2.destroyAllWindows()
     
